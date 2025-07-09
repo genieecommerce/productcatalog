@@ -10,6 +10,8 @@ import com.geniecommerce.productcatalog.entities.ProductImageEntities;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 
@@ -28,6 +30,7 @@ public class ProductDTO {
 	@Schema(description = "Name of the product", example = "Wireless Mouse")
 	private String name;
 
+	private Boolean isActive;
 	
 	@Size(min = 5, max = 500)
 	@Schema(description = "Detailed description of the product", example = "Ergonomic wireless mouse with adjustable DPI")
@@ -41,10 +44,12 @@ public class ProductDTO {
 	@Schema(description = "Country of origin", example = "India")
 	private String origin;
 
-	
+	@NotEmpty(message = "Attributes must contain at least one entry")
 	private Map<String, String> attributes;
 	
-	
+    @NotNull(message = "Category must not be null")
 	private ProductCategoryDTO category;
+	
+	@Size(min = 1, message = "images must contain at least one item")
 	private List<ProductImageDTO> images;
 }

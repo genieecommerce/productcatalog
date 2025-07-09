@@ -58,12 +58,11 @@ public class ProductEntity {
 
 	@Schema(description = "Country of origin", example = "India")
 	private String origin;
+	
+	private Boolean isActive;
 
-	@ElementCollection
-	@CollectionTable(name = "product_attributes", joinColumns = @JoinColumn(name = "product_id"))
-	@MapKeyColumn(name = "attribute_key")
-	@Column(name = "attribute_value")
-	private Map<String, String> attributes;
+	@OneToMany(mappedBy = "product",fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<ProductAttributesEntity> attributes;
 	
 	@Schema(description = "Product category", example = "Electronics")
 	@ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)

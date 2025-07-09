@@ -73,5 +73,10 @@ public interface ProductApi {
     @ApiResponse(responseCode = "204", description = "Product deleted or deactivated")
     @DeleteMapping(value = "/{id}", produces = {"application/json", "application/xml"})
     ResponseEntity<Void> deleteProduct(@PathVariable Long id);
+    
+    @GetMapping(value = "/{id}", produces = {"application/json", "application/xml"})
+    ResponseEntity<APIResponseDTO>  update(@PathVariable String id);
+    
+    
 }
 

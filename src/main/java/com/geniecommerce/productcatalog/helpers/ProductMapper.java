@@ -4,9 +4,11 @@ import java.util.List;
 
 import org.mapstruct.Mapper;
 
+import com.geniecommerce.productcatalog.dto.ProductAttributesDTO;
 import com.geniecommerce.productcatalog.dto.ProductCategoryDTO;
 import com.geniecommerce.productcatalog.dto.ProductDTO;
 import com.geniecommerce.productcatalog.dto.ProductImageDTO;
+import com.geniecommerce.productcatalog.entities.ProductAttributesEntity;
 import com.geniecommerce.productcatalog.entities.ProductCategoryEntity;
 import com.geniecommerce.productcatalog.entities.ProductEntity;
 import com.geniecommerce.productcatalog.entities.ProductImageEntities;
@@ -33,5 +35,11 @@ public interface ProductMapper {
     
     List<ProductImageDTO> toProductImageDTOList(List<ProductImageEntities> entity);
     List<ProductImageEntities> toProductImageEntitiesList(List<ProductImageDTO> dto);
+    
+    ProductAttributesDTO toProductAttributesDTO(ProductAttributesEntity entity);
+    ProductAttributesEntity toProductAttributesEntity(ProductAttributesDTO dto);
+    
+    List<ProductAttributesDTO> toProductAttributesDTOList(List<ProductAttributesEntity> entity);
+    List<ProductAttributesEntity> toProductAttributesEntityList(List<ProductAttributesDTO> dto);
 
 }
